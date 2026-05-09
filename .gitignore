@@ -3,3 +3,9 @@ __pycache__/
 .env
 .ipynb_checkpoints/
 data/processed/
+
+
+data/vector_db/
+__pycache__/
+*.pyc
+.env

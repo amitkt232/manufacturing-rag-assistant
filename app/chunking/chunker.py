@@ -1,37 +1,79 @@
 import json
-from langchain_text_splitters import RecursiveCharacterTextSplitter
+
+from langchain_text_splitters import (
+    RecursiveCharacterTextSplitter
+)
 
 
 def load_documents(json_path):
 
-    with open(json_path, "r", encoding="utf-8") as f:
+    with open(
+        json_path,
+        "r",
+        encoding="utf-8"
+    ) as f:
 
         return json.load(f)
+
+
+def clean_text(text):
+
+    text = text.strip()
+
+    return text
 
 
 def create_chunks(documents):
 
     splitter = RecursiveCharacterTextSplitter(
 
-        chunk_size=500,
-        chunk_overlap=100
+        chunk_size=800,
+
+        chunk_overlap=150,
+
+        separators=[
+
+            "\n\n",
+            "\n",
+            ". ",
+            " ",
+            ""
+        ]
     )
 
     chunks = []
 
     for page in documents:
 
-        texts = splitter.split_text(page["text"])
+        cleaned_text = clean_text(
+            page["text"]
+        )
+
+        if not cleaned_text:
+            continue
+
+        texts = splitter.split_text(
+            cleaned_text
+        )
 
         for chunk_id, text in enumerate(texts):
 
             chunk_data = {
 
-                "document_name": page["document_name"],
-                "page_number": page["page_number"],
-                "chunk_id": chunk_id,
-                "text": text,
-                "is_scanned": page["is_scanned"]
+                "document_name":
+                page["document_name"],
+
+                "page_number":
+                page["page_number"],
+
+                "chunk_id":
+                chunk_id,
+
+                "text":
+                text,
+
+                "is_scanned":
+                page["is_scanned"]
             }
 
             chunks.append(chunk_data)
@@ -41,12 +83,25 @@ def create_chunks(documents):
 
 if __name__ == "__main__":
 
-    documents = load_documents("data/processed/output.json")
+    documents = load_documents(
+        "data/processed/output.json"
+    )
 
     chunks = create_chunks(documents)
 
-    with open("data/processed/chunks.json", "w", encoding="utf-8") as f:
+    with open(
+        "data/processed/chunks.json",
+        "w",
+        encoding="utf-8"
+    ) as f:
 
-        json.dump(chunks, f, indent=2, ensure_ascii=False)
+        json.dump(
+            chunks,
+            f,
+            indent=2,
+            ensure_ascii=False
+        )
 
-    print(f"Created {len(chunks)} chunks successfully!")
+    print(
+        f"Created {len(chunks)} chunks successfully!"
+    )

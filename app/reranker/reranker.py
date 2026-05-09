@@ -1,4 +1,6 @@
-from sentence_transformers import CrossEncoder
+from sentence_transformers import (
+    CrossEncoder
+)
 
 from app.retrieval.retrieve import search
 
@@ -32,7 +34,7 @@ def rerank(query):
         reverse=True
     )
 
-    return reranked
+    return reranked[:3]
 
 
 if __name__ == "__main__":
@@ -54,4 +56,6 @@ if __name__ == "__main__":
 
             print(f"Score: {score}")
 
-            print(chunk[:500])
+            print("\nChunk:\n")
+
+            print(chunk[:700])
