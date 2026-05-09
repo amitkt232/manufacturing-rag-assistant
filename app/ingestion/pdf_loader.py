@@ -83,7 +83,7 @@ def extract_document(pdf_path):
 
 if __name__ == "__main__":
 
-    pdf_path = pdf_path = "data/raw/Fanuc Connection and Maintenance Manual.pdf"
+    pdf_path = "data/raw/Basic_Hydraulic_And_Components.pdf"
 
     pages = extract_document(pdf_path)
 
