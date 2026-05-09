@@ -1,0 +1,38 @@
+[
+  {
+    "question":
+    "What causes pump cavitation?",
+
+    "expected_keywords":
+    [
+      "air",
+      "pump",
+      "rotation",
+      "fluid"
+    ]
+  },
+
+  {
+    "question":
+    "What are hydraulic troubleshooting steps?",
+
+    "expected_keywords":
+    [
+      "repair",
+      "troubleshooting",
+      "check"
+    ]
+  },
+
+  {
+    "question":
+    "How is lubrication inspection performed?",
+
+    "expected_keywords":
+    [
+      "test",
+      "abrasion",
+      "inspection"
+    ]
+  }
+]
