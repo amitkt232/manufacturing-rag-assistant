@@ -64,3 +64,29 @@ Embedding quality degraded for structured content.
 
 Potential Fix:
 Table-aware chunking later.
+
+
+Issue:
+Broad maintenance queries retrieved partially relevant chunks without explicit interval information.
+
+Impact:
+LLM produced fallback response despite semantically related retrieval.
+
+Potential Fix:
+Hybrid retrieval or metadata filtering later.
+
+Issue:
+Troubleshooting-focused queries retrieved highly relevant procedural chunks.
+
+Impact:
+Grounded responses significantly improved.
+
+Observation:
+Technical procedural queries performed better than broad operational queries.
+
+
+Observation:
+Cross-encoder reranking improved relevance ordering for troubleshooting queries.
+
+Observation:
+BM25 improved exact technical keyword matching while semantic retrieval improved conceptual matching.
